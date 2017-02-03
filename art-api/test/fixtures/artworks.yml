@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  _links: 
+  title: MyString
+  category: MyString
+  date: MyString
+  blurb: MyString
+  similar_to_artwork_id: MyString
+
+two:
+  _links: 
+  title: MyString
+  category: MyString
+  date: MyString
+  blurb: MyString
+  similar_to_artwork_id: MyString
