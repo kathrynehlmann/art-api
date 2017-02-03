@@ -10,7 +10,10 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    one_user = User.find(params[:id])
+    user_artworks = one_artwork.climates
+
+    render json: { user: one_artwork, artwork: user_artworks }
   end
 
   # POST /users
