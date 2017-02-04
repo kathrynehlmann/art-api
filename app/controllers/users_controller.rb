@@ -9,11 +9,12 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
+  ################# ask for help with this. ###############
   def show
     one_user = User.find(params[:id])
-    user_artworks = one_artwork.climates
+    user_artworks = one_user.artworks
 
-    render json: { user: one_artwork, artwork: user_artworks }
+    render json: { user: one_user, artworks: user_artworks }
   end
 
   # POST /users
