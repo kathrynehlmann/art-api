@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "artworks#index"
   resources :favorites
   resources :users
   resources :artworks

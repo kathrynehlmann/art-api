@@ -7,9 +7,9 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*'
-    # 'localhost:3001'
+    origins '//localhost:3001'
     #Do I need my heroku URL in the whitelist as well? Nope, swap it out. Always be defining the url that makes the request, the frontend.
+    # '*'
     # '//still-crag-23724.herokuapp.com'
     # restart your servers!
 
