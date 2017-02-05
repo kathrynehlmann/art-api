@@ -16,6 +16,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 #use fake data for development and testing
 gem 'faker'
+# gem dotenv to manage enviroment variables https://github.com/bkeepers/dotenv
+gem 'dotenv-rails', groups: [:development, :test]
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
