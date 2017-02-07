@@ -534,3 +534,10 @@ Processing by ArtworksController#index as HTML
 Completed 200 OK in 60ms (Views: 26.0ms | ActiveRecord: 20.8ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-02-06 19:54:23 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArtworksController#index as HTML
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 23ms (Views: 10.2ms | ActiveRecord: 3.3ms)
+
+
