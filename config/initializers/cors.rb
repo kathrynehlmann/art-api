@@ -7,7 +7,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://acquired.herokuapp.com' 
+    origins '*'
+    # 'https://acquired.herokuapp.com'  change this back for presenation
     #heroku deployment URL for frontend
     # 'localhost:3001' #starting URl that is going to be making the request
     #Do I need my heroku URL in the whitelist as well? Nope, swap it out. Always be defining the url that makes the request, the frontend.
