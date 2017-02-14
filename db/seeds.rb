@@ -5,14 +5,33 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-3.times do
-  User.create({
-    name: Faker::Name.name,
-    avatar: Faker::Avatar.image,
+User.create({
+    name: "Omar Hutson",
+    avatar: "http://www.searchquotes.com/sof/images/user/sm_103213_20140929_210956_asz.jpg",
     email: Faker::Internet.email,
     password: Faker::Internet.password
     })
-  end
+
+User.create({
+      name: "Onie Boyer",
+      avatar: "http://avatars.fyre.co/a/26/dde2f3138429142b44290e8b2d729ddb/50.jpg?v=1414128309",
+      email: Faker::Internet.email,
+      password: Faker::Internet.password
+      })
+
+User.create({
+        name: "Alex Pacocha",
+        avatar: "http://hellopoetry.s3.amazonaws.com/static/cache/25/09/2509b7afc2fe72d71f45b5cba2a85c3a.jpg",
+        email: Faker::Internet.email,
+        password: Faker::Internet.password
+        })
+
+User.create({
+          name: "Kellie Morar",
+          avatar: "https://mir-s3-cdn-cf.behance.net/user/50/6a904d4671453.54d67cbc93daf.jpg",
+          email: Faker::Internet.email,
+          password: Faker::Internet.password
+          })
 
 Artwork.create({
     _links: "https://i.imgur.com/UkLEabI.gif",
@@ -25,7 +44,7 @@ Artwork.create({
 
 Artwork.create({
         _links: "http://i.imgur.com/eUXSKQQ.gif",
-        title: "Title Unknown",
+        title: "Storm over Oklahoma",
         category: "outdoors",
         date: Faker::Business.credit_card_expiry_date,
         blurb: "by Orbo",
@@ -64,13 +83,13 @@ Artwork.create({
       title: "Snow in Sulmona, Italy",
       category: "weather",
       date: Faker::Business.credit_card_expiry_date,
-      blurb: "by orbojunglist via Reddit",
+      blurb: "by orbojunglist",
       similar_to_artwork_id: "https://i.imgur.com/y56E1uc.gif"
       })
 
 Artwork.create({
    _links: "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif",
-    title: "Title Unknown",
+    title: "Waterfall",
     category: "people",
     date: Faker::Business.credit_card_expiry_date,
     blurb: "Artist Unknown",
@@ -78,12 +97,12 @@ Artwork.create({
         })
 
 Artwork.create({
-        _links: "http://68.media.tumblr.com/edb03b54ad7d33a8af5fb2a4d1ff58a4/tumblr_nhb8s1mKWu1s85u2fo1_500.gif",
-        title: "Untitled",
-        category: "outdoors",
+        _links: "http://blog.gaborit-d.com/wp-content/uploads/2016/12/cinemagraph-urban-photo-2.gif",
+        title: "Girl with a hat.",
+        category: "people",
         date: Faker::Business.credit_card_expiry_date,
         blurb: "by Julien Douvier",
-        similar_to_artwork_id: "http://i.imgur.com/ByBeubd.gif"
+        similar_to_artwork_id: "http://i.imgur.com/6IhJ7bp.gif"
         })
 
 Artwork.create({
@@ -142,7 +161,7 @@ Artwork.create({
 
 Artwork.create({
       _links: "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif",
-      title: "Title Unknown",
+      title: "Day at the Beach",
       category: "travel",
       date: Faker::Business.credit_card_expiry_date,
       blurb: "Artist Unknown",
@@ -151,7 +170,7 @@ Artwork.create({
 
 Artwork.create({
       _links: "http://i.imgur.com/ByBeubd.gif",
-      title: "Title Unknown",
+      title: "Shoreline",
       category: "outdoors",
       date: Faker::Business.credit_card_expiry_date,
       blurb: "by Orbo",
@@ -166,3 +185,12 @@ Artwork.create({
       blurb: "by Orbo",
       similar_to_artwork_id: "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"
     })
+
+Artwork.create({
+          _links: "http://i.imgur.com/fJ774vs.gif",
+          title: "Two kids and a train.",
+          category: "travel",
+          date: Faker::Business.credit_card_expiry_date,
+          blurb: "by Orbo",
+          similar_to_artwork_id: "http://i.imgur.com/BUcUO1j.gif"
+        })

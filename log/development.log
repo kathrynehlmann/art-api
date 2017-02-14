@@ -1297,3 +1297,768 @@ Processing by ArtworksController#index as HTML
 Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.7ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (337.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "art-api_development"[0m
+  [1m[35m (776.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "art-api_test"[0m
+  [1m[35m (522.8ms)[0m  [1m[35mCREATE DATABASE "art-api_development" ENCODING = 'unicode'[0m
+  [1m[35m (328.9ms)[0m  [1m[35mCREATE DATABASE "art-api_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (18.2ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" serial primary key, "_links" character varying, "title" character varying, "category" character varying, "date" character varying, "blurb" character varying, "similar_to_artwork_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" serial primary key, "user_id" integer, "artwork_id" integer, "qty" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_artwork_id" ON "favorites" USING btree ("artwork_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites" USING btree ("user_id")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "avatar" character varying, "email" character varying, "password" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_c7567edfea"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+[0m
+  [1m[35m (5.0ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170203014812')[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170203010817'),
+('20170203011010');
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-14 19:31:55 UTC], ["updated_at", 2017-02-14 19:31:55 UTC]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" serial primary key, "_links" character varying, "title" character varying, "category" character varying, "date" character varying, "blurb" character varying, "similar_to_artwork_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" serial primary key, "user_id" integer, "artwork_id" integer, "qty" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_artwork_id" ON "favorites" USING btree ("artwork_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites" USING btree ("user_id")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "avatar" character varying, "email" character varying, "password" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_c7567edfea"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170203014812')[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170203010817'),
+('20170203011010');
+
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kellie Morar"], ["avatar", "http://www.searchquotes.com/sof/images/user/sm_103213_20140929_210956_asz.jpg"], ["email", "brenden.bins@wilkinson.net"], ["password", "KxYqWfTcUrLx5zG"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Onie Boyer"], ["avatar", "http://avatars.fyre.co/a/26/dde2f3138429142b44290e8b2d729ddb/50.jpg?v=1414128309"], ["email", "abigayle_hintz@eichmann.com"], ["password", "N7ZyNy3aIfM9N"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Allie Pacocha"], ["avatar", "http://hellopoetry.s3.amazonaws.com/static/cache/25/09/2509b7afc2fe72d71f45b5cba2a85c3a.jpg"], ["email", "bert.pfannerstill@bartolettisteuber.org"], ["password", "GkGfDtYn5wO"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mrs. Ahmad Homenick"], ["avatar", "https://mir-s3-cdn-cf.behance.net/user/50/6a904d4671453.54d67cbc93daf.jpg"], ["email", "marques_spencer@rutherford.co"], ["password", "7vQ1EbVvCaN"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/UkLEabI.gif"], ["title", "Colorado Sunset"], ["category", "outdoors"], ["date", "2018-02-14"], ["blurb", "by Jonathan Trites in partnership with Meredith Meeks"], ["similar_to_artwork_id", "http://i.imgur.com/eUXSKQQ.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/eUXSKQQ.gif"], ["title", "Title Unknown"], ["category", "outdoors"], ["date", "2021-02-13"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "https://i.imgur.com/UkLEabI.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/jv01qMz.gif"], ["title", "Discovery III"], ["category", "sky"], ["date", "2021-02-13"], ["blurb", "by Jonathan Mitchell"], ["similar_to_artwork_id", "https://i.imgur.com/y56E1uc.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/6IhJ7bp.gif"], ["title", "Mornings in Provence"], ["category", "people"], ["date", "2019-02-14"], ["blurb", "by Jamie Beck and Kevin Burg"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/y56E1uc.gif"], ["title", "Churning Fog"], ["category", "outdoors"], ["date", "2018-02-14"], ["blurb", "by salix-lanata"], ["similar_to_artwork_id", "https://i.imgur.com/jv01qMz.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/EBe13cE.gif"], ["title", "Snow in Sulmona, Italy"], ["category", "weather"], ["date", "2019-02-14"], ["blurb", "by orbojunglist via Reddit"], ["similar_to_artwork_id", "https://i.imgur.com/y56E1uc.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["title", "Title Unknown"], ["category", "people"], ["date", "2018-02-14"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "http://payload337.cargocollective.com/1/13/430252/9048491/Cabane_600.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2016/12/cinemagraph-urban-photo-2.gif"], ["title", "Girl with a hat."], ["category", "people"], ["date", "2020-02-14"], ["blurb", "by Julien Douvier"], ["similar_to_artwork_id", "http://i.imgur.com/6IhJ7bp.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/lfife0i.gif"], ["title", "Storm Coming"], ["category", "weather"], ["date", "2020-02-14"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "https://giant.gfycat.com/TenderRipeBrahmancow.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://giant.gfycat.com/TenderRipeBrahmancow.gif"], ["title", "Supercell"], ["category", "weather"], ["date", "2020-02-14"], ["blurb", "Tender Ripe Brahman via Reddit"], ["similar_to_artwork_id", "http://i.imgur.com/lfife0i.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/bFDmgDE.gif"], ["title", "Starry"], ["category", "sky"], ["date", "2021-02-13"], ["blurb", "dengcaijun via Reddit"], ["similar_to_artwork_id", "http://i.imgur.com/bFDmgDE.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/O5WJ5AO.gif"], ["title", "Golden Rays"], ["category", "sky"], ["date", "2021-02-13"], ["blurb", "by shanedoesthis"], ["similar_to_artwork_id", "http://i.imgur.com/bFDmgDE.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://payload337.cargocollective.com/1/13/430252/9048491/Cabane_600.gif"], ["title", "Cabane"], ["category", "people"], ["date", "2018-02-14"], ["blurb", "by Julien Douvier"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://media.giphy.com/media/bCOZaX9TYHZYY/giphy.gif"], ["title", "Prince of Wales Hotel in Waterton Lakes National Park, Alberta, Canada"], ["category", "travel"], ["date", "2021-02-13"], ["blurb", "by Travel Alberta"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"], ["title", "Title Unknown"], ["category", "travel"], ["date", "2021-02-13"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/ByBeubd.gif"], ["title", "Title Unknown"], ["category", "outdoors"], ["date", "2018-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://68.media.tumblr.com/edb03b54ad7d33a8af5fb2a4d1ff58a4/tumblr_nhb8s1mKWu1s85u2fo1_500.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/BUcUO1j.gif"], ["title", "Title Unknown"], ["category", "travel"], ["date", "2018-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/fJ774vs.gif"], ["title", "Two kids and a train."], ["category", "travel"], ["date", "2018-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:31:56 UTC], ["updated_at", 2017-02-14 19:31:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:32:22 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:32:22 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+Processing by ArtworksController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 40ms (Views: 20.9ms | ActiveRecord: 7.9ms)
+
+
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 83ms (Views: 37.8ms | ActiveRecord: 6.5ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (126.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "art-api_development"[0m
+  [1m[35m (143.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "art-api_test"[0m
+  [1m[35m (357.7ms)[0m  [1m[35mCREATE DATABASE "art-api_development" ENCODING = 'unicode'[0m
+  [1m[35m (313.9ms)[0m  [1m[35mCREATE DATABASE "art-api_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" serial primary key, "_links" character varying, "title" character varying, "category" character varying, "date" character varying, "blurb" character varying, "similar_to_artwork_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" serial primary key, "user_id" integer, "artwork_id" integer, "qty" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_artwork_id" ON "favorites" USING btree ("artwork_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites" USING btree ("user_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "avatar" character varying, "email" character varying, "password" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_c7567edfea"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170203014812')[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170203010817'),
+('20170203011010');
+
+[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-14 19:34:54 UTC], ["updated_at", 2017-02-14 19:34:54 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (93.2ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" serial primary key, "_links" character varying, "title" character varying, "category" character varying, "date" character varying, "blurb" character varying, "similar_to_artwork_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" serial primary key, "user_id" integer, "artwork_id" integer, "qty" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_artwork_id" ON "favorites" USING btree ("artwork_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites" USING btree ("user_id")[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "avatar" character varying, "email" character varying, "password" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_c7567edfea"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+[0m
+  [1m[35m (21.6ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170203014812')[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170203010817'),
+('20170203011010');
+
+[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-14 19:34:54 UTC], ["updated_at", 2017-02-14 19:34:54 UTC]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Omar Hutson"], ["avatar", "http://www.searchquotes.com/sof/images/user/sm_103213_20140929_210956_asz.jpg"], ["email", "providenci_dietrich@parker.co"], ["password", "J0Dv8tQ1U9"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Onie Boyer"], ["avatar", "http://avatars.fyre.co/a/26/dde2f3138429142b44290e8b2d729ddb/50.jpg?v=1414128309"], ["email", "katharina_howe@gradykulas.net"], ["password", "9aQ4281j"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Alex Pacocha"], ["avatar", "http://hellopoetry.s3.amazonaws.com/static/cache/25/09/2509b7afc2fe72d71f45b5cba2a85c3a.jpg"], ["email", "arvid.barrows@boyerstrosin.net"], ["password", "Cb37PtC1KhRoVzIp"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kellie Morar"], ["avatar", "https://mir-s3-cdn-cf.behance.net/user/50/6a904d4671453.54d67cbc93daf.jpg"], ["email", "carolanne@rutherford.co"], ["password", "V9I0Vq3zWn3lZmOk"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/UkLEabI.gif"], ["title", "Colorado Sunset"], ["category", "outdoors"], ["date", "2019-02-14"], ["blurb", "by Jonathan Trites in partnership with Meredith Meeks"], ["similar_to_artwork_id", "http://i.imgur.com/eUXSKQQ.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/eUXSKQQ.gif"], ["title", "Title Unknown"], ["category", "outdoors"], ["date", "2021-02-13"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "https://i.imgur.com/UkLEabI.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/jv01qMz.gif"], ["title", "Discovery III"], ["category", "sky"], ["date", "2019-02-14"], ["blurb", "by Jonathan Mitchell"], ["similar_to_artwork_id", "https://i.imgur.com/y56E1uc.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/6IhJ7bp.gif"], ["title", "Mornings in Provence"], ["category", "people"], ["date", "2019-02-14"], ["blurb", "by Jamie Beck and Kevin Burg"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/y56E1uc.gif"], ["title", "Churning Fog"], ["category", "outdoors"], ["date", "2019-02-14"], ["blurb", "by salix-lanata"], ["similar_to_artwork_id", "https://i.imgur.com/jv01qMz.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/EBe13cE.gif"], ["title", "Snow in Sulmona, Italy"], ["category", "weather"], ["date", "2021-02-13"], ["blurb", "by orbojunglist via Reddit"], ["similar_to_artwork_id", "https://i.imgur.com/y56E1uc.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["title", "Title Unknown"], ["category", "people"], ["date", "2019-02-14"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "http://payload337.cargocollective.com/1/13/430252/9048491/Cabane_600.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2016/12/cinemagraph-urban-photo-2.gif"], ["title", "Girl with a hat."], ["category", "people"], ["date", "2018-02-14"], ["blurb", "by Julien Douvier"], ["similar_to_artwork_id", "http://i.imgur.com/6IhJ7bp.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/lfife0i.gif"], ["title", "Storm Coming"], ["category", "weather"], ["date", "2020-02-14"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "https://giant.gfycat.com/TenderRipeBrahmancow.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://giant.gfycat.com/TenderRipeBrahmancow.gif"], ["title", "Supercell"], ["category", "weather"], ["date", "2019-02-14"], ["blurb", "Tender Ripe Brahman via Reddit"], ["similar_to_artwork_id", "http://i.imgur.com/lfife0i.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/bFDmgDE.gif"], ["title", "Starry"], ["category", "sky"], ["date", "2021-02-13"], ["blurb", "dengcaijun via Reddit"], ["similar_to_artwork_id", "http://i.imgur.com/bFDmgDE.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/O5WJ5AO.gif"], ["title", "Golden Rays"], ["category", "sky"], ["date", "2018-02-14"], ["blurb", "by shanedoesthis"], ["similar_to_artwork_id", "http://i.imgur.com/bFDmgDE.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://payload337.cargocollective.com/1/13/430252/9048491/Cabane_600.gif"], ["title", "Cabane"], ["category", "people"], ["date", "2019-02-14"], ["blurb", "by Julien Douvier"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://media.giphy.com/media/bCOZaX9TYHZYY/giphy.gif"], ["title", "Prince of Wales Hotel in Waterton Lakes National Park, Alberta, Canada"], ["category", "travel"], ["date", "2020-02-14"], ["blurb", "by Travel Alberta"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"], ["title", "Title Unknown"], ["category", "travel"], ["date", "2018-02-14"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/ByBeubd.gif"], ["title", "Title Unknown"], ["category", "outdoors"], ["date", "2020-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://68.media.tumblr.com/edb03b54ad7d33a8af5fb2a4d1ff58a4/tumblr_nhb8s1mKWu1s85u2fo1_500.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/BUcUO1j.gif"], ["title", "Title Unknown"], ["category", "travel"], ["date", "2020-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/fJ774vs.gif"], ["title", "Two kids and a train."], ["category", "travel"], ["date", "2018-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:34:55 UTC], ["updated_at", 2017-02-14 19:34:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:35:12 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:35:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (13.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (1.0ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 34ms (Views: 13.3ms | ActiveRecord: 6.7ms)
+
+
+Completed 200 OK in 66ms (Views: 30.8ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:36:10 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:36:10 -0500
+Processing by UsersController#index as HTML
+Processing by ArtworksController#index as HTML
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 3.5ms)
+
+
+  [1m[36mArtwork Load (5.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 18ms (Views: 12.2ms | ActiveRecord: 5.1ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (284.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "art-api_development"[0m
+  [1m[35m (311.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "art-api_test"[0m
+  [1m[35m (608.7ms)[0m  [1m[35mCREATE DATABASE "art-api_development" ENCODING = 'unicode'[0m
+  [1m[35m (361.5ms)[0m  [1m[35mCREATE DATABASE "art-api_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" serial primary key, "_links" character varying, "title" character varying, "category" character varying, "date" character varying, "blurb" character varying, "similar_to_artwork_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" serial primary key, "user_id" integer, "artwork_id" integer, "qty" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_artwork_id" ON "favorites" USING btree ("artwork_id")[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites" USING btree ("user_id")[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "avatar" character varying, "email" character varying, "password" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_c7567edfea"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+[0m
+  [1m[35m (14.8ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170203014812')[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170203010817'),
+('20170203011010');
+
+[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-14 19:44:22 UTC], ["updated_at", 2017-02-14 19:44:22 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" serial primary key, "_links" character varying, "title" character varying, "category" character varying, "date" character varying, "blurb" character varying, "similar_to_artwork_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" serial primary key, "user_id" integer, "artwork_id" integer, "qty" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_artwork_id" ON "favorites" USING btree ("artwork_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites" USING btree ("user_id")[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "avatar" character varying, "email" character varying, "password" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (13.5ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_c7567edfea"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+[0m
+  [1m[35m (7.4ms)[0m  [1m[35mALTER TABLE "favorites" ADD CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170203014812')[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170203010817'),
+('20170203011010');
+
+[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Omar Hutson"], ["avatar", "http://www.searchquotes.com/sof/images/user/sm_103213_20140929_210956_asz.jpg"], ["email", "chaya@denesiksauer.name"], ["password", "1qC4Px5jT"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Onie Boyer"], ["avatar", "http://avatars.fyre.co/a/26/dde2f3138429142b44290e8b2d729ddb/50.jpg?v=1414128309"], ["email", "eryn@rennerraynor.com"], ["password", "L4CnMcCj7fK3RzT"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Alex Pacocha"], ["avatar", "http://hellopoetry.s3.amazonaws.com/static/cache/25/09/2509b7afc2fe72d71f45b5cba2a85c3a.jpg"], ["email", "rachel.wiegand@herman.biz"], ["password", "DlDjS521V2IkD4"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "avatar", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kellie Morar"], ["avatar", "https://mir-s3-cdn-cf.behance.net/user/50/6a904d4671453.54d67cbc93daf.jpg"], ["email", "deborah@strosin.com"], ["password", "PrGgNbCmBsJ3ZmGw"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/UkLEabI.gif"], ["title", "Colorado Sunset"], ["category", "outdoors"], ["date", "2018-02-14"], ["blurb", "by Jonathan Trites in partnership with Meredith Meeks"], ["similar_to_artwork_id", "http://i.imgur.com/eUXSKQQ.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/eUXSKQQ.gif"], ["title", "Storm over Oklahoma"], ["category", "outdoors"], ["date", "2018-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "https://i.imgur.com/UkLEabI.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/jv01qMz.gif"], ["title", "Discovery III"], ["category", "sky"], ["date", "2019-02-14"], ["blurb", "by Jonathan Mitchell"], ["similar_to_artwork_id", "https://i.imgur.com/y56E1uc.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/6IhJ7bp.gif"], ["title", "Mornings in Provence"], ["category", "people"], ["date", "2018-02-14"], ["blurb", "by Jamie Beck and Kevin Burg"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/y56E1uc.gif"], ["title", "Churning Fog"], ["category", "outdoors"], ["date", "2019-02-14"], ["blurb", "by salix-lanata"], ["similar_to_artwork_id", "https://i.imgur.com/jv01qMz.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://i.imgur.com/EBe13cE.gif"], ["title", "Snow in Sulmona, Italy"], ["category", "weather"], ["date", "2021-02-13"], ["blurb", "by orbojunglist"], ["similar_to_artwork_id", "https://i.imgur.com/y56E1uc.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["title", "Waterfall"], ["category", "people"], ["date", "2019-02-14"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "http://payload337.cargocollective.com/1/13/430252/9048491/Cabane_600.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2016/12/cinemagraph-urban-photo-2.gif"], ["title", "Girl with a hat."], ["category", "people"], ["date", "2021-02-13"], ["blurb", "by Julien Douvier"], ["similar_to_artwork_id", "http://i.imgur.com/6IhJ7bp.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/lfife0i.gif"], ["title", "Storm Coming"], ["category", "weather"], ["date", "2021-02-13"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "https://giant.gfycat.com/TenderRipeBrahmancow.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://giant.gfycat.com/TenderRipeBrahmancow.gif"], ["title", "Supercell"], ["category", "weather"], ["date", "2018-02-14"], ["blurb", "Tender Ripe Brahman via Reddit"], ["similar_to_artwork_id", "http://i.imgur.com/lfife0i.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/bFDmgDE.gif"], ["title", "Starry"], ["category", "sky"], ["date", "2019-02-14"], ["blurb", "dengcaijun via Reddit"], ["similar_to_artwork_id", "http://i.imgur.com/bFDmgDE.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/O5WJ5AO.gif"], ["title", "Golden Rays"], ["category", "sky"], ["date", "2020-02-14"], ["blurb", "by shanedoesthis"], ["similar_to_artwork_id", "http://i.imgur.com/bFDmgDE.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://payload337.cargocollective.com/1/13/430252/9048491/Cabane_600.gif"], ["title", "Cabane"], ["category", "people"], ["date", "2019-02-14"], ["blurb", "by Julien Douvier"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-24.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "https://media.giphy.com/media/bCOZaX9TYHZYY/giphy.gif"], ["title", "Prince of Wales Hotel in Waterton Lakes National Park, Alberta, Canada"], ["category", "travel"], ["date", "2018-02-14"], ["blurb", "by Travel Alberta"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"], ["title", "Day at the Beach"], ["category", "travel"], ["date", "2021-02-13"], ["blurb", "Artist Unknown"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/ByBeubd.gif"], ["title", "Shoreline"], ["category", "outdoors"], ["date", "2020-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://68.media.tumblr.com/edb03b54ad7d33a8af5fb2a4d1ff58a4/tumblr_nhb8s1mKWu1s85u2fo1_500.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/BUcUO1j.gif"], ["title", "Title Unknown"], ["category", "travel"], ["date", "2018-02-14"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://blog.gaborit-d.com/wp-content/uploads/2014/05/best-cinemagraph-32.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("_links", "title", "category", "date", "blurb", "similar_to_artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["_links", "http://i.imgur.com/fJ774vs.gif"], ["title", "Two kids and a train."], ["category", "travel"], ["date", "2021-02-13"], ["blurb", "by Orbo"], ["similar_to_artwork_id", "http://i.imgur.com/BUcUO1j.gif"], ["created_at", 2017-02-14 19:44:23 UTC], ["updated_at", 2017-02-14 19:44:23 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:44:49 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:44:49 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 37ms (Views: 10.3ms | ActiveRecord: 5.6ms)
+
+
+Completed 200 OK in 57ms (Views: 20.7ms | ActiveRecord: 14.3ms)
+
+
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:48:08 -0500
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:48:08 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (3.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 16ms (Views: 11.2ms | ActiveRecord: 3.6ms)
+
+
+  [1m[36mUser Load (10.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 17ms (Views: 6.2ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:49:32 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:49:32 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (2.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 32ms (Views: 29.8ms | ActiveRecord: 2.3ms)
+
+
+  [1m[36mUser Load (28.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 33ms (Views: 4.0ms | ActiveRecord: 28.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:50:47 -0500
+Processing by ArtworksController#index as HTML
+  [1m[36mArtwork Load (2.0ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:50:47 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:52:39 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:52:39 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (1.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mUser Load (17.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 26ms (Views: 8.0ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:53:28 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:53:28 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (2.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 20ms (Views: 17.0ms | ActiveRecord: 2.6ms)
+
+
+  [1m[36mUser Load (17.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 23ms (Views: 4.4ms | ActiveRecord: 17.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:54:50 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:54:50 -0500
+  [1m[36mArtwork Load (1.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 1.3ms)
+
+
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:56:02 -0500
+Processing by ArtworksController#index as HTML
+  [1m[36mArtwork Load (1.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:56:02 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 12ms (Views: 3.3ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 14:58:42 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 14:58:42 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (2.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 2.6ms)
+
+
+  [1m[36mUser Load (17.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 22ms (Views: 3.8ms | ActiveRecord: 17.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:00:29 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:00:29 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 2.5ms)
+
+
+  [1m[36mArtwork Load (16.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 29ms (Views: 12.1ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:00:47 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:00:47 -0500
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (6.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 22ms (Views: 14.6ms | ActiveRecord: 6.8ms)
+
+
+  [1m[36mUser Load (15.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 22ms (Views: 5.8ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:03:27 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:03:27 -0500
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Processing by UsersController#index as HTML
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:04:02 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:04:02 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (1.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.5ms)
+
+
+  [1m[36mUser Load (14.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 20ms (Views: 4.7ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:12:06 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:12:06 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (2.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 29ms (Views: 25.8ms | ActiveRecord: 2.3ms)
+
+
+  [1m[36mUser Load (25.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 31ms (Views: 5.2ms | ActiveRecord: 25.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:12:55 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:12:55 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (3.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 24ms (Views: 19.9ms | ActiveRecord: 3.3ms)
+
+
+  [1m[36mUser Load (23.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 28ms (Views: 4.0ms | ActiveRecord: 23.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:13:09 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:13:09 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (1.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mUser Load (11.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 16ms (Views: 4.3ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:16:05 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:16:05 -0500
+  [1m[36mArtwork Load (1.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 13ms (Views: 9.7ms | ActiveRecord: 1.2ms)
+
+
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (13.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 18ms (Views: 3.7ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:16:54 -0500
+Processing by ArtworksController#index as HTML
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:16:54 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:17:17 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:17:17 -0500
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.8ms)
+
+
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:18:00 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:18:00 -0500
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (2.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 2.6ms)
+
+
+  [1m[36mUser Load (18.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 21ms (Views: 3.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:19:05 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:19:05 -0500
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Processing by UsersController#index as HTML
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 10ms (Views: 3.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:24:18 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:24:18 -0500
+Processing by UsersController#index as HTML
+Processing by ArtworksController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 2.4ms)
+
+
+  [1m[36mArtwork Load (3.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 23ms (Views: 18.6ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:34:47 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:34:47 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (3.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 3.2ms)
+
+
+  [1m[36mUser Load (11.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 16ms (Views: 3.8ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:40:58 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:40:58 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 21ms (Views: 12.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:41:47 -0500
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:41:47 -0500
+Processing by ArtworksController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mUser Load (11.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 18ms (Views: 6.8ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-14 15:42:38 -0500
+Processing by ArtworksController#index as HTML
+Started GET "//users" for 127.0.0.1 at 2017-02-14 15:42:38 -0500
+  [1m[36mArtwork Load (3.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Completed 200 OK in 20ms (Views: 16.1ms | ActiveRecord: 3.3ms)
+
+
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+
+
