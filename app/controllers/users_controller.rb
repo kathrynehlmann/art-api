@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  ################# ask for help with this. ###############
   def show
     render json: @user
   end
