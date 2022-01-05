@@ -13,7 +13,7 @@ ruby '2.3.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12'
 #use fake data for development and testing
 gem 'faker'
 # gem dotenv to manage enviroment variables https://github.com/bkeepers/dotenv
