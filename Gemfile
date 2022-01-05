@@ -32,7 +32,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'rack-cors'
 
 # Use Paperclip for image upload and hadling of gif file animation
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
